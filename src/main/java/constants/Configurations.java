@@ -16,4 +16,14 @@ public interface Configurations {
 	 * ブラウザをヘッドレスモードで使用するか.
 	 */
 	boolean USE_HEADLESS_MODE = false;
+
+	/**
+	 * Tumblerアカウントのメールアドレス.
+	 */
+	final String TUMBLR_EMAIL = "CHANGEME";
+
+	/**
+	 * Tumblerアカウントのパスワード.
+	 */
+	final String TUMBLR_PASSWORD = "CHANGEME";
 }
