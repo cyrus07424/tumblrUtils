@@ -1,8 +1,8 @@
 package utils;
 
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -30,7 +30,9 @@ public class SeleniumHelper {
 
 		// ChromeOptions
 		ChromeOptions chromeOptions = new ChromeOptions();
-		chromeOptions.setHeadless(Configurations.USE_HEADLESS_MODE);
+		if (Configurations.USE_HEADLESS_MODE) {
+			chromeOptions.addArguments("--headless=new");
+		}
 		chromeOptions.addArguments("--disable-dev-shm-usage");
 		chromeOptions.addArguments("--no-sandbox");
 
@@ -42,7 +44,7 @@ public class SeleniumHelper {
 		WebDriver driver = new ChromeDriver(chromeOptions);
 
 		// タイムアウトを設定
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
 		return driver;
 	}
